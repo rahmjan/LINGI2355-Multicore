@@ -11,5 +11,5 @@ You must follow this order:
 - [CreatingThreads.md](CreatingThreads.md): basics of creating and running threads in Java.
 - [Monitors.md](Monitors.md): using the Java built-in monitor model.
 - [Locks.md](Locks.md): explicit reentrant locks and condition variables.
-- [Environment.md](Environment.md): accessing the Pascaline INGI server.
+- [Environment.md](Environment.md): accessing the Burattini INGI server.
 - [Testing.md](Testing.md): running measurements and assessing the scalability of our algorithms.
