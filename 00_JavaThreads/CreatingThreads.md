@@ -24,7 +24,7 @@ public class HelloWorld implements Runnable {
 }
 ```
 
-The [`Thread`](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html) class constructor takes a object implementing `Runnable` and creates a new thread:
+The [`Thread`](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html) class constructor takes an object implementing `Runnable` and creates a new thread:
 
 ```java
 public static void main(String[] args) {
