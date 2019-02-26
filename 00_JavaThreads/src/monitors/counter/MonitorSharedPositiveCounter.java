@@ -5,7 +5,7 @@ public class MonitorSharedPositiveCounter {
 
 	public synchronized void inc() { 
 		counter++; 
-		notify();
+		notifyAll();
 	}
 	public synchronized void dec() { 
 		if (counter == 0) {
@@ -32,6 +32,7 @@ public class MonitorSharedPositiveCounter {
 					for (int j=0;j<NB_OPS;j++) {
 						if (ThreadLocalRandom.current().nextDouble()<0.25) counter.dec();
 						else counter.inc();
+//						counter.inc();
 					}
 				}
 			});

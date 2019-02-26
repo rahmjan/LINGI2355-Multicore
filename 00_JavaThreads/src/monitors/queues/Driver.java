@@ -1,15 +1,16 @@
 public class Driver {
-	static final int NB_PROD = 2;
-	static final int NB_CONS = 2;
-	static final int NB_TESTS = 2;
+	static final int NB_PROD = 200;
+	static final int NB_CONS = 200;
+	static final int NB_TESTS = 20;
 	
 	public static void main(String[] args) {
 		Thread[] cons = new Thread[NB_CONS];
 		Thread[] prods = new Thread[NB_PROD];
 		
 		// create the shared queue
-		Queue q = new UnsyncQueue();
-		
+//		Queue q = new UnsyncQueue();
+		Queue q = new SyncQueue();
+
 		// create the threads and run them
 		for (int i=0;i<NB_CONS;i++) {
 			cons[i]=new Thread(new Consumer(q,NB_TESTS));
