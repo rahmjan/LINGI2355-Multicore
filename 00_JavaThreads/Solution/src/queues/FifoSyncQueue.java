@@ -19,9 +19,6 @@ public class FifoSyncQueue implements Queue {
         nextPriorityConsumerGive = (nextPriorityConsumerGive + 1) % priorityMaxSize;
 
         while (head==tail  || !nextPriorityConsumer.equals(priorityConsumer.get())) {
-
-//            System.out.println("Consumer: " + Thread.currentThread() + " " + priorityConsumer.get() + " Head: " + head + " Tail: " + tail);
-
             try {
                 wait();
             }
@@ -33,7 +30,6 @@ public class FifoSyncQueue implements Queue {
         count--;
 
         nextPriorityConsumer = (nextPriorityConsumer + 1) % priorityMaxSize;
-//        System.out.println("Consumer2: " + Thread.currentThread() + " " + nextPriorityConsumer + " Count: " + count);
 
         notifyAll();
 
@@ -46,9 +42,6 @@ public class FifoSyncQueue implements Queue {
         nextPriorityProducerGive = (nextPriorityProducerGive + 1) % priorityMaxSize;
 
         while(count==SIZE || !nextPriorityProducer.equals(priorityProducer.get())) {
-
-//            System.out.println("Producer: " + Thread.currentThread() + " " + priorityProducer.get() + " Count: " + count + " nextPriorityProducer: " + nextPriorityProducer);
-
             try {
                 wait();
             }
@@ -60,7 +53,6 @@ public class FifoSyncQueue implements Queue {
         count++;
 
         nextPriorityProducer = (nextPriorityProducer + 1) % priorityMaxSize;
-//        System.out.println("Producer2: " + Thread.currentThread() + " " + nextPriorityProducer);
 
         notifyAll();
     }
