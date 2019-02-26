@@ -63,8 +63,12 @@
     ```  
 
 - [ ] Fix the implementation of the shared queue to form a linearizable, safe concurrent object of class `SyncQueue`. Your implementation will be blocking: when there is no element to consume, a consumer thread will be blocked for an unbounded amount of time waiting for a producer thread to produce something, and similarly for producers waiting for a free empty slot.
+
+    [It is here.](./src/queues/SyncQueue.java)
+
 - [ ] Make a copy of the `SyncQueue` class called `FifoSyncQueue` that implements the FIFO-access fairness guarantee (also called bounded waiting in the lecture). Your implementation will use thread-local variables. Justify the correctness of your construction by providing a proof sketch.
 
+    [It is here.](./src/queues/FifoSyncQueue.java)
 
 ##### Locks
 ##### Environment

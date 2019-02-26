@@ -1,5 +1,5 @@
 public class SyncQueue implements Queue {
-    final static int SIZE = 100 ;
+    final static int SIZE = 50 ;
     int head = 0;
     int tail = 0;
     final Elem[] cells = new Elem[SIZE];
@@ -13,10 +13,11 @@ public class SyncQueue implements Queue {
             catch (InterruptedException e) {}
         }
 
-        Elem ret = cells[(head++) % SIZE];
+        Elem ret = cells[head];
+        head = (head + 1) % SIZE;
         count--;
 
-        notifyAll();
+        notify();
 
         return ret;
     }
@@ -29,10 +30,11 @@ public class SyncQueue implements Queue {
             catch (InterruptedException ex) {}
         }
 
-        cells[(tail++) % SIZE] = e;
+        cells[tail] = e;
+        tail = (tail + 1) % SIZE;
         count++;
 
-        notifyAll();
+        notify();
     }
 
     public String toString() {

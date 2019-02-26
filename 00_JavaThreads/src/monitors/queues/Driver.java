@@ -1,7 +1,7 @@
 public class Driver {
 	static final int NB_PROD = 200;
-	static final int NB_CONS = 200;
-	static final int NB_TESTS = 20;
+	static final int NB_CONS = 180;
+	static final int NB_TESTS = 2;
 	
 	public static void main(String[] args) {
 		Thread[] cons = new Thread[NB_CONS];
@@ -9,7 +9,8 @@ public class Driver {
 		
 		// create the shared queue
 //		Queue q = new UnsyncQueue();
-		Queue q = new SyncQueue();
+//		Queue q = new SyncQueue();
+		Queue q = new FifoSyncQueue();
 
 		// create the threads and run them
 		for (int i=0;i<NB_CONS;i++) {
