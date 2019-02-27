@@ -71,7 +71,24 @@
     [It is here.](./src/queues/FifoSyncQueue.java)
 
 ##### Locks
-##### Environment
+
+- [ ] Find what it means for a lock to be *reentrant* and an example where this property can be convenient.
+- [ ] Your colleague is confused: She or he used a condition `cond` for a lock `l` and calls `cond.wait()`, while holding `l`. The code compiles, but fails with a `java.lang.IllegalMonitorStateException` runtime exception. Explain her or him what happened (and in particular why the code compiled in the first place).
+
+Thrown to indicate that a thread has attempted to wait on an object's monitor or to notify other threads waiting on an object's monitor without owning the specified monitor.
+
+- [ ] Write a new version (call its class `LockQueue`) of your shared FIFO queue (the one without the fairness guarantee of FIFO-entry/bounded waiting) using reentrant locks and two condition variables. Explain if and why you expect any performance improvement, in particular with small queues (e.g. 1 or 2 elements) under high contention.
+
+    [It is here.](./src/queues/LockQueue.java)
+
+- [ ] Write now a new version of your fair (FIFO-entry/bounded waiting) shared queue using a reentrant lock and as many condition variables as you wish. Call this class `FifoLockQueue`. Note that ideally we want a bounded number of threads to be set to Runnable when a condition can be met (i.e. we prefer to avoid calls to `signalAll()`).
+
+    [It is here.](./src/queues/FifoLockQueue.java)
+
+- [ ] The `ReentrantLock` constructor admits a boolean named `fairness`. Using the documentation, determine if this would allow solving our FIFO-entry requirement for the shared queue, and how.
+
+    When set true, under contention, locks favor granting access to the longest-waiting thread. But...
+
 ##### Testing
 
 -- javac *.java ../../../Solution/src/queues/*.java -d ../../../Solution/bin/

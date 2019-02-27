@@ -1,6 +1,6 @@
 public class Driver {
-	static final int NB_PROD = 200;
-	static final int NB_CONS = 180;
+	static final int NB_PROD = 24;
+	static final int NB_CONS = 24;
 	static final int NB_TESTS = 2;
 	
 	public static void main(String[] args) {
@@ -10,7 +10,8 @@ public class Driver {
 		// create the shared queue
 //		Queue q = new UnsyncQueue();
 //		Queue q = new SyncQueue();
-		Queue q = new FifoSyncQueue();
+//		Queue q = new FifoSyncQueue();
+		Queue q = new LockQueue();
 
 		// create the threads and run them
 		for (int i=0;i<NB_CONS;i++) {
@@ -21,6 +22,7 @@ public class Driver {
 			prods[i]=new Thread(new Producer(q,NB_TESTS));
 			prods[i].start();
 		}
+
 		// wait for them to terminate
 		for (int i=0;i<NB_PROD;i++) {
 			try {
@@ -31,7 +33,8 @@ public class Driver {
 			try {
 				cons[i].join();
 			} catch (InterruptedException e) {}
-		}	
+		}
+
 		// observe the state of the queue
 		System.out.println(q);
 	}

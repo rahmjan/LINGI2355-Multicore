@@ -1,12 +1,14 @@
 public class SyncQueue implements Queue {
-    final static int SIZE = 50 ;
+    final static int SIZE = 4;
     int head = 0;
     int tail = 0;
     final Elem[] cells = new Elem[SIZE];
     int count = 0;
+    long numOfDeq = 0;
+    long numOfEnq = 0;
 
     public synchronized Elem dequeue() {
-        while (head==tail) {
+        while (count==0) {
             try {
                 wait();
             }
@@ -16,8 +18,9 @@ public class SyncQueue implements Queue {
         Elem ret = cells[head];
         head = (head + 1) % SIZE;
         count--;
+        ++numOfDeq;
 
-        notify();
+        notifyAll();
 
         return ret;
     }
@@ -33,11 +36,12 @@ public class SyncQueue implements Queue {
         cells[tail] = e;
         tail = (tail + 1) % SIZE;
         count++;
+        ++numOfEnq;
 
-        notify();
+        notifyAll();
     }
 
     public String toString() {
-        return("head = "+head+", tail = "+tail);
+        return("head = "+head+", tail = "+tail + ", numOfEnq = " + numOfEnq + ", numOfDeq = " + numOfDeq);
     }
 }

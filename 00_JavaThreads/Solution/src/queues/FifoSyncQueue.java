@@ -1,9 +1,11 @@
 public class FifoSyncQueue implements Queue {
-    final static int SIZE = 50 ;
+    final static int SIZE = 4;
     int head = 0;
     int tail = 0;
     final Elem[] cells = new Elem[SIZE];
     int count = 0;
+    long numOfDeq = 0;
+    long numOfEnq = 0;
 
     private ThreadLocal<Integer> priorityProducer = new ThreadLocal<Integer>();
     private Integer nextPriorityProducer = 0;
@@ -18,7 +20,7 @@ public class FifoSyncQueue implements Queue {
         priorityConsumer.set(nextPriorityConsumerGive);
         nextPriorityConsumerGive = (nextPriorityConsumerGive + 1) % priorityMaxSize;
 
-        while (head==tail  || !nextPriorityConsumer.equals(priorityConsumer.get())) {
+        while (count==0  || !nextPriorityConsumer.equals(priorityConsumer.get())) {
             try {
                 wait();
             }
@@ -28,6 +30,7 @@ public class FifoSyncQueue implements Queue {
         Elem ret = cells[head];
         head = (head + 1) % SIZE;
         count--;
+        ++numOfDeq;
 
         nextPriorityConsumer = (nextPriorityConsumer + 1) % priorityMaxSize;
 
@@ -51,6 +54,7 @@ public class FifoSyncQueue implements Queue {
         cells[tail] = e;
         tail = (tail + 1) % SIZE;
         count++;
+        ++numOfEnq;
 
         nextPriorityProducer = (nextPriorityProducer + 1) % priorityMaxSize;
 
@@ -58,6 +62,6 @@ public class FifoSyncQueue implements Queue {
     }
 
     public String toString() {
-        return("head = "+head+", tail = "+tail);
+        return("head = "+head+", tail = "+tail + ", numOfEnq = " + numOfEnq + ", numOfDeq = " + numOfDeq);
     }
 }
