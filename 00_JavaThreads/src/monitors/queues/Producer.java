@@ -1,7 +1,7 @@
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Producer implements Runnable {
-	static final int WORK_TIME = 1500;
+	static final int WORK_TIME = 50;
 	final int nb_tests;
 	private Queue q ;
 

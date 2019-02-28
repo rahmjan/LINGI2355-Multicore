@@ -1,26 +1,45 @@
 public class Driver {
-	static final int NB_PROD = 200;
-	static final int NB_CONS = 200;
-	static final int NB_TESTS = 5;
-	
+
 	public static void main(String[] args) {
+		final int NB_PROD  = Integer.parseInt(args[1]);
+		final int NB_CONS  = Integer.parseInt(args[2]);
+		final int NB_TESTS = Integer.parseInt(args[3]);
+
 		Thread[] cons = new Thread[NB_CONS];
 		Thread[] prods = new Thread[NB_PROD];
 		
 		// create the shared queue
-//		Queue q = new UnsyncQueue();
-//		Queue q = new SyncQueue();
-//		Queue q = new FifoSyncQueue();
-//		Queue q = new LockQueue();
-		Queue q = new FifoLockQueue();
+		Queue q = null;
+		switch(Integer.parseInt(args[0])){
+			case 0:
+			default:
+				q = new UnsyncQueue();
+				break;
+
+			case 1:
+				q = new SyncQueue();
+				break;
+
+			case 2:
+				q = new FifoSyncQueue();
+				break;
+
+			case 3:
+				q = new LockQueue();
+				break;
+
+			case 4:
+				q = new FifoLockQueue();
+				break;
+		}
 
 		// create the threads and run them
 		for (int i=0;i<NB_CONS;i++) {
-			cons[i]=new Thread(new Consumer(q,NB_TESTS));
+			cons[i]=new Thread(new Consumer(q,NB_TESTS/NB_PROD));
 			cons[i].start();
 		}
 		for (int i=0;i<NB_PROD;i++) {
-			prods[i]=new Thread(new Producer(q,NB_TESTS));
+			prods[i]=new Thread(new Producer(q,NB_TESTS/NB_CONS));
 			prods[i].start();
 		}
 
