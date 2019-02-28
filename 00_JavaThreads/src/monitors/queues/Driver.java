@@ -7,6 +7,8 @@ public class Driver {
 
 		Thread[] cons = new Thread[NB_CONS];
 		Thread[] prods = new Thread[NB_PROD];
+
+		System.out.println("\nNum of threads: " + NB_PROD);
 		
 		// create the shared queue
 		Queue q = null;
