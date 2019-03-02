@@ -37,11 +37,11 @@ public class Driver {
 
 		// create the threads and run them
 		for (int i=0;i<NB_CONS;i++) {
-			cons[i]=new Thread(new Consumer(q,NB_TESTS/NB_PROD));
+			cons[i]=new Thread(new Consumer(q,NB_TESTS/NB_CONS));
 			cons[i].start();
 		}
 		for (int i=0;i<NB_PROD;i++) {
-			prods[i]=new Thread(new Producer(q,NB_TESTS/NB_CONS));
+			prods[i]=new Thread(new Producer(q,NB_TESTS/NB_PROD));
 			prods[i].start();
 		}
 
