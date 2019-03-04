@@ -1,0 +1,236 @@
+
+Num of threads: 1
+Producer Thred_ID: 19 Working_time: 431406 Synch_time: 32694
+Consumer Thred_ID: 18 Working_time: 430565 Synch_time: 33600
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 2
+Producer Thred_ID: 21 Working_time: 215765 Synch_time: 13818
+Consumer Thred_ID: 18 Working_time: 215660 Synch_time: 14395
+Producer Thred_ID: 20 Working_time: 217493 Synch_time: 13718
+Consumer Thred_ID: 19 Working_time: 216908 Synch_time: 14289
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 4
+Producer Thred_ID: 25 Working_time: 107497 Synch_time: 5406
+Consumer Thred_ID: 19 Working_time: 107190 Synch_time: 5685
+Producer Thred_ID: 23 Working_time: 107520 Synch_time: 5544
+Producer Thred_ID: 22 Working_time: 108081 Synch_time: 5418
+Consumer Thred_ID: 20 Working_time: 107862 Synch_time: 6074
+Consumer Thred_ID: 18 Working_time: 108093 Synch_time: 6231
+Producer Thred_ID: 24 Working_time: 108914 Synch_time: 5510
+Consumer Thred_ID: 21 Working_time: 107683 Synch_time: 6195
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 6
+Producer Thred_ID: 25 Working_time: 71298 Synch_time: 3374
+Producer Thred_ID: 27 Working_time: 71558 Synch_time: 3261
+Producer Thred_ID: 29 Working_time: 71535 Synch_time: 3311
+Consumer Thred_ID: 19 Working_time: 72099 Synch_time: 2909
+Consumer Thred_ID: 18 Working_time: 72048 Synch_time: 2965
+Consumer Thred_ID: 23 Working_time: 71926 Synch_time: 3215
+Producer Thred_ID: 24 Working_time: 71937 Synch_time: 3255
+Producer Thred_ID: 28 Working_time: 71863 Synch_time: 3303
+Consumer Thred_ID: 20 Working_time: 72182 Synch_time: 3158
+Consumer Thred_ID: 22 Working_time: 72538 Synch_time: 3361
+Producer Thred_ID: 26 Working_time: 72756 Synch_time: 3348
+Consumer Thred_ID: 21 Working_time: 72578 Synch_time: 3408
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 8
+Producer Thred_ID: 29 Working_time: 53811 Synch_time: 2100
+Producer Thred_ID: 28 Working_time: 53909 Synch_time: 2038
+Consumer Thred_ID: 22 Working_time: 53885 Synch_time: 2118
+Consumer Thred_ID: 21 Working_time: 53754 Synch_time: 2115
+Producer Thred_ID: 30 Working_time: 54097 Synch_time: 2037
+Consumer Thred_ID: 25 Working_time: 54050 Synch_time: 2142
+Consumer Thred_ID: 18 Working_time: 54177 Synch_time: 2094
+Producer Thred_ID: 31 Working_time: 54224 Synch_time: 2090
+Producer Thred_ID: 27 Working_time: 54164 Synch_time: 2133
+Consumer Thred_ID: 23 Working_time: 54337 Synch_time: 2072
+Consumer Thred_ID: 24 Working_time: 54341 Synch_time: 2078
+Producer Thred_ID: 32 Working_time: 54345 Synch_time: 2126
+Consumer Thred_ID: 19 Working_time: 54290 Synch_time: 2159
+Producer Thred_ID: 33 Working_time: 54437 Synch_time: 2181
+Producer Thred_ID: 26 Working_time: 54532 Synch_time: 2144
+Consumer Thred_ID: 20 Working_time: 54567 Synch_time: 2076
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 10
+Producer Thred_ID: 29 Working_time: 42499 Synch_time: 1564
+Consumer Thred_ID: 22 Working_time: 42699 Synch_time: 1465
+Consumer Thred_ID: 25 Working_time: 42786 Synch_time: 1511
+Consumer Thred_ID: 23 Working_time: 42901 Synch_time: 1448
+Producer Thred_ID: 31 Working_time: 42862 Synch_time: 1466
+Consumer Thred_ID: 19 Working_time: 42983 Synch_time: 1527
+Producer Thred_ID: 30 Working_time: 42986 Synch_time: 1543
+Producer Thred_ID: 36 Working_time: 43053 Synch_time: 1590
+Producer Thred_ID: 34 Working_time: 43163 Synch_time: 1535
+Consumer Thred_ID: 20 Working_time: 43232 Synch_time: 1511
+Producer Thred_ID: 28 Working_time: 43116 Synch_time: 1540
+Consumer Thred_ID: 26 Working_time: 43183 Synch_time: 1473
+Producer Thred_ID: 37 Working_time: 43278 Synch_time: 1533
+Consumer Thred_ID: 21 Working_time: 43261 Synch_time: 1457
+Producer Thred_ID: 35 Working_time: 43366 Synch_time: 1533
+Producer Thred_ID: 33 Working_time: 43328 Synch_time: 1553
+Consumer Thred_ID: 27 Working_time: 43472 Synch_time: 1475
+Consumer Thred_ID: 24 Working_time: 43547 Synch_time: 1630
+Producer Thred_ID: 32 Working_time: 43639 Synch_time: 1520
+Consumer Thred_ID: 18 Working_time: 43505 Synch_time: 1668
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 12
+Consumer Thred_ID: 27 Working_time: 35465 Synch_time: 1117
+Producer Thred_ID: 30 Working_time: 35628 Synch_time: 1112
+Producer Thred_ID: 35 Working_time: 35684 Synch_time: 1106
+Producer Thred_ID: 31 Working_time: 35714 Synch_time: 1142
+Consumer Thred_ID: 26 Working_time: 35788 Synch_time: 1087
+Consumer Thred_ID: 20 Working_time: 35746 Synch_time: 1130
+Consumer Thred_ID: 25 Working_time: 35856 Synch_time: 1110
+Producer Thred_ID: 40 Working_time: 35791 Synch_time: 1161
+Consumer Thred_ID: 24 Working_time: 36000 Synch_time: 1137
+Consumer Thred_ID: 28 Working_time: 35978 Synch_time: 1119
+Producer Thred_ID: 39 Working_time: 36009 Synch_time: 1158
+Consumer Thred_ID: 19 Working_time: 36098 Synch_time: 1113
+Producer Thred_ID: 38 Working_time: 36035 Synch_time: 1148
+Consumer Thred_ID: 23 Working_time: 36197 Synch_time: 1061
+Producer Thred_ID: 33 Working_time: 36176 Synch_time: 1079
+Consumer Thred_ID: 22 Working_time: 36192 Synch_time: 1124
+Producer Thred_ID: 34 Working_time: 36117 Synch_time: 1154
+Producer Thred_ID: 37 Working_time: 36238 Synch_time: 1100
+Producer Thred_ID: 36 Working_time: 36217 Synch_time: 1131
+Consumer Thred_ID: 21 Working_time: 36262 Synch_time: 1134
+Producer Thred_ID: 32 Working_time: 36222 Synch_time: 1215
+Consumer Thred_ID: 18 Working_time: 36335 Synch_time: 1138
+Producer Thred_ID: 41 Working_time: 36456 Synch_time: 1244
+Consumer Thred_ID: 29 Working_time: 36516 Synch_time: 1171
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 16
+Producer Thred_ID: 39 Working_time: 26622 Synch_time: 695
+Consumer Thred_ID: 18 Working_time: 26677 Synch_time: 684
+Consumer Thred_ID: 31 Working_time: 26723 Synch_time: 656
+Producer Thred_ID: 40 Working_time: 26699 Synch_time: 707
+Consumer Thred_ID: 19 Working_time: 26682 Synch_time: 716
+Producer Thred_ID: 38 Working_time: 26671 Synch_time: 715
+Producer Thred_ID: 46 Working_time: 26747 Synch_time: 705
+Producer Thred_ID: 37 Working_time: 26730 Synch_time: 756
+Producer Thred_ID: 47 Working_time: 26815 Synch_time: 699
+Consumer Thred_ID: 21 Working_time: 26885 Synch_time: 671
+Consumer Thred_ID: 20 Working_time: 26859 Synch_time: 689
+Consumer Thred_ID: 33 Working_time: 26873 Synch_time: 700
+Producer Thred_ID: 45 Working_time: 26867 Synch_time: 706
+Consumer Thred_ID: 25 Working_time: 26912 Synch_time: 690
+Producer Thred_ID: 34 Working_time: 26913 Synch_time: 694
+Consumer Thred_ID: 29 Working_time: 26934 Synch_time: 678
+Consumer Thred_ID: 23 Working_time: 26949 Synch_time: 713
+Consumer Thred_ID: 30 Working_time: 26984 Synch_time: 687
+Producer Thred_ID: 35 Working_time: 26958 Synch_time: 706
+Producer Thred_ID: 42 Working_time: 26978 Synch_time: 739
+Consumer Thred_ID: 32 Working_time: 27042 Synch_time: 709
+Producer Thred_ID: 44 Working_time: 27047 Synch_time: 678
+Consumer Thred_ID: 26 Working_time: 26985 Synch_time: 748
+Producer Thred_ID: 49 Working_time: 27129 Synch_time: 728
+Producer Thred_ID: 48 Working_time: 27059 Synch_time: 748
+Consumer Thred_ID: 22 Working_time: 27194 Synch_time: 698
+Producer Thred_ID: 41 Working_time: 27214 Synch_time: 707
+Consumer Thred_ID: 28 Working_time: 27203 Synch_time: 741
+Producer Thred_ID: 43 Working_time: 27271 Synch_time: 735
+Consumer Thred_ID: 24 Working_time: 27364 Synch_time: 725
+Producer Thred_ID: 36 Working_time: 27399 Synch_time: 697
+Consumer Thred_ID: 27 Working_time: 27373 Synch_time: 750
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 20
+Consumer Thred_ID: 37 Working_time: 21250 Synch_time: 438
+Consumer Thred_ID: 27 Working_time: 21364 Synch_time: 439
+Producer Thred_ID: 39 Working_time: 21299 Synch_time: 502
+Producer Thred_ID: 57 Working_time: 21297 Synch_time: 495
+Producer Thred_ID: 46 Working_time: 21302 Synch_time: 516
+Consumer Thred_ID: 23 Working_time: 21454 Synch_time: 427
+Producer Thred_ID: 43 Working_time: 21364 Synch_time: 507
+Consumer Thred_ID: 26 Working_time: 21478 Synch_time: 447
+Producer Thred_ID: 40 Working_time: 21463 Synch_time: 495
+Producer Thred_ID: 53 Working_time: 21459 Synch_time: 509
+Consumer Thred_ID: 29 Working_time: 21533 Synch_time: 454
+Producer Thred_ID: 41 Working_time: 21521 Synch_time: 466
+Consumer Thred_ID: 36 Working_time: 21535 Synch_time: 452
+Consumer Thred_ID: 21 Working_time: 21460 Synch_time: 483
+Consumer Thred_ID: 35 Working_time: 21568 Synch_time: 441
+Consumer Thred_ID: 24 Working_time: 21567 Synch_time: 471
+Consumer Thred_ID: 28 Working_time: 21629 Synch_time: 440
+Producer Thred_ID: 47 Working_time: 21545 Synch_time: 487
+Producer Thred_ID: 51 Working_time: 21556 Synch_time: 491
+Producer Thred_ID: 49 Working_time: 21562 Synch_time: 510
+Consumer Thred_ID: 22 Working_time: 21676 Synch_time: 458
+Producer Thred_ID: 50 Working_time: 21620 Synch_time: 478
+Producer Thred_ID: 54 Working_time: 21607 Synch_time: 491
+Producer Thred_ID: 42 Working_time: 21610 Synch_time: 503
+Producer Thred_ID: 52 Working_time: 21641 Synch_time: 500
+Consumer Thred_ID: 34 Working_time: 21752 Synch_time: 464
+Producer Thred_ID: 56 Working_time: 21670 Synch_time: 502
+Consumer Thred_ID: 19 Working_time: 21776 Synch_time: 463
+Consumer Thred_ID: 32 Working_time: 21742 Synch_time: 469
+Producer Thred_ID: 44 Working_time: 21727 Synch_time: 505
+Consumer Thred_ID: 30 Working_time: 21779 Synch_time: 473
+Producer Thred_ID: 38 Working_time: 21765 Synch_time: 486
+Consumer Thred_ID: 33 Working_time: 21808 Synch_time: 488
+Producer Thred_ID: 45 Working_time: 21793 Synch_time: 502
+Producer Thred_ID: 48 Working_time: 21689 Synch_time: 543
+Consumer Thred_ID: 20 Working_time: 21826 Synch_time: 512
+Consumer Thred_ID: 18 Working_time: 21881 Synch_time: 482
+Consumer Thred_ID: 25 Working_time: 21888 Synch_time: 565
+Producer Thred_ID: 55 Working_time: 21913 Synch_time: 504
+Consumer Thred_ID: 31 Working_time: 21942 Synch_time: 538
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000
+
+Num of threads: 24
+Producer Thred_ID: 46 Working_time: 17479 Synch_time: 363
+Producer Thred_ID: 45 Working_time: 17601 Synch_time: 390
+Producer Thred_ID: 43 Working_time: 17688 Synch_time: 348
+Producer Thred_ID: 56 Working_time: 17773 Synch_time: 351
+Consumer Thred_ID: 27 Working_time: 17806 Synch_time: 376
+Producer Thred_ID: 57 Working_time: 17861 Synch_time: 376
+Consumer Thred_ID: 40 Working_time: 17842 Synch_time: 391
+Consumer Thred_ID: 36 Working_time: 17867 Synch_time: 381
+Consumer Thred_ID: 24 Working_time: 17887 Synch_time: 406
+Consumer Thred_ID: 38 Working_time: 17885 Synch_time: 395
+Consumer Thred_ID: 37 Working_time: 17860 Synch_time: 382
+Producer Thred_ID: 64 Working_time: 17945 Synch_time: 331
+Consumer Thred_ID: 21 Working_time: 17842 Synch_time: 409
+Consumer Thred_ID: 30 Working_time: 17901 Synch_time: 376
+Consumer Thred_ID: 32 Working_time: 17939 Synch_time: 375
+Consumer Thred_ID: 29 Working_time: 17970 Synch_time: 386
+Producer Thred_ID: 58 Working_time: 17945 Synch_time: 351
+Consumer Thred_ID: 19 Working_time: 18010 Synch_time: 369
+Producer Thred_ID: 49 Working_time: 17988 Synch_time: 383
+Producer Thred_ID: 47 Working_time: 17982 Synch_time: 389
+Producer Thred_ID: 60 Working_time: 17998 Synch_time: 370
+Producer Thred_ID: 53 Working_time: 18026 Synch_time: 367
+Consumer Thred_ID: 35 Working_time: 17999 Synch_time: 389
+Consumer Thred_ID: 34 Working_time: 18015 Synch_time: 368
+Producer Thred_ID: 59 Working_time: 17955 Synch_time: 376
+Consumer Thred_ID: 26 Working_time: 18035 Synch_time: 386
+Producer Thred_ID: 61 Working_time: 18050 Synch_time: 327
+Producer Thred_ID: 44 Working_time: 18056 Synch_time: 385
+Consumer Thred_ID: 33 Working_time: 18041 Synch_time: 381
+Producer Thred_ID: 55 Working_time: 18046 Synch_time: 386
+Producer Thred_ID: 48 Working_time: 18108 Synch_time: 360
+Consumer Thred_ID: 39 Working_time: 18090 Synch_time: 382
+Producer Thred_ID: 54 Working_time: 18095 Synch_time: 372
+Consumer Thred_ID: 28 Working_time: 18083 Synch_time: 398
+Producer Thred_ID: 51 Working_time: 18101 Synch_time: 362
+Producer Thred_ID: 63 Working_time: 18099 Synch_time: 357
+Producer Thred_ID: 62 Working_time: 18150 Synch_time: 331
+Consumer Thred_ID: 25 Working_time: 18133 Synch_time: 378
+Consumer Thred_ID: 22 Working_time: 18097 Synch_time: 399
+Consumer Thred_ID: 20 Working_time: 18122 Synch_time: 383
+Producer Thred_ID: 65 Working_time: 18163 Synch_time: 353
+Consumer Thred_ID: 41 Working_time: 18132 Synch_time: 397
+Producer Thred_ID: 52 Working_time: 18185 Synch_time: 359
+Consumer Thred_ID: 23 Working_time: 18227 Synch_time: 418
+Producer Thred_ID: 42 Working_time: 18296 Synch_time: 379
+Consumer Thred_ID: 31 Working_time: 18274 Synch_time: 487
+Producer Thred_ID: 50 Working_time: 18420 Synch_time: 381
+Consumer Thred_ID: 18 Working_time: 18344 Synch_time: 485
+head = 0, tail = 0, numOfEnq = 96000, numOfDeq = 96000

@@ -50,8 +50,9 @@
 
 - [ ] What is the consistency model offered by the SharedCounterMonitor class? Let us now imagine that we remove the `synchronized` keyword from the `get()` method. Does this change the consistency model and how? (you may need to wait for the third lecture to answer this question)
 
-    It should be Mutual Exclusion -> Only one thread can access MonitorSharedCounter object.
+    It should be Linearizability.
     If we removed `synchronized` from `get()` method then threads can read the counter in parallel and the execution of program should be faster because we do not waste time on synchronization for this operation. The function of program will not change. 
+    And now it should be Sequential Consistency because non-overlapping operations can be re-order in different threads.
 
 - [ ] What happens if we use a `notifyAll()` call instead of `notify()` in this example? Is our code still matching the specification? If not, what would be required?
 
@@ -64,31 +65,68 @@
 
 - [ ] Fix the implementation of the shared queue to form a linearizable, safe concurrent object of class `SyncQueue`. Your implementation will be blocking: when there is no element to consume, a consumer thread will be blocked for an unbounded amount of time waiting for a producer thread to produce something, and similarly for producers waiting for a free empty slot.
 
-    [It is here.](./src/queues/SyncQueue.java)
+    [Code is here.](./src/queues/SyncQueue.java)
 
 - [ ] Make a copy of the `SyncQueue` class called `FifoSyncQueue` that implements the FIFO-access fairness guarantee (also called bounded waiting in the lecture). Your implementation will use thread-local variables. Justify the correctness of your construction by providing a proof sketch.
 
-    [It is here.](./src/queues/FifoSyncQueue.java)
+    [Code is here.](./src/queues/FifoSyncQueue.java)
 
 ##### Locks
 
 - [ ] Find what it means for a lock to be *reentrant* and an example where this property can be convenient.
+
+    Reentrant Lock allow threads to enter into lock on a resource more than once. When the thread first enters into lock, a hold count is set to one. Before unlocking the thread can re-enter into lock again and every time hold count is incremented by one. For every unlock request, hold count is decremented by one and when hold count is 0, the resource is unlocked.
+    Advantage: We don't have to worry about the possibility of failing due to accidentally acquiring a lock that we already hold.
+
 - [ ] Your colleague is confused: She or he used a condition `cond` for a lock `l` and calls `cond.wait()`, while holding `l`. The code compiles, but fails with a `java.lang.IllegalMonitorStateException` runtime exception. Explain her or him what happened (and in particular why the code compiled in the first place).
 
-Thrown to indicate that a thread has attempted to wait on an object's monitor or to notify other threads waiting on an object's monitor without owning the specified monitor.
+    In documentation: "If this lock is not held when any of the Condition waiting or signalling methods are called, then an IllegalMonitorStateException is thrown."
+    That means this exception can only happen when we do not hold the lock...
+    
+    It can compile because compilator can not find runtime errors. 
 
 - [ ] Write a new version (call its class `LockQueue`) of your shared FIFO queue (the one without the fairness guarantee of FIFO-entry/bounded waiting) using reentrant locks and two condition variables. Explain if and why you expect any performance improvement, in particular with small queues (e.g. 1 or 2 elements) under high contention.
 
-    [It is here.](./src/queues/LockQueue.java)
+    [Code is here.](./src/queues/LockQueue.java)
+    
+    There should be improvement because now we do not have to call `notifiAll()` (we do not have to wake up all the threads).
+    Also with condition variables now we have two sets of threads. So with `signal()` we will only wake up one waiting thread of the set.
 
 - [ ] Write now a new version of your fair (FIFO-entry/bounded waiting) shared queue using a reentrant lock and as many condition variables as you wish. Call this class `FifoLockQueue`. Note that ideally we want a bounded number of threads to be set to Runnable when a condition can be met (i.e. we prefer to avoid calls to `signalAll()`).
 
-    [It is here.](./src/queues/FifoLockQueue.java)
+    [Code is here.](./src/queues/FifoLockQueue.java)
 
 - [ ] The `ReentrantLock` constructor admits a boolean named `fairness`. Using the documentation, determine if this would allow solving our FIFO-entry requirement for the shared queue, and how.
 
-    When set true, under contention, locks favor granting access to the longest-waiting thread. But...
+    When set true, under contention, locks favor granting access to the longest-waiting thread. It `favors`, it is not guarantee. So it can not solve our FIFO-entry requirement.
 
 ##### Testing
 
--- javac *.java ../../../Solution/src/queues/*.java -d ../../../Solution/bin/
+For testing I used the suggested scenario for all of queues:
+
+- The number of producer threads vary from 1 to 24, using increments 1, 2, 4, 6, 8, 10, 12, 16, 20, 24;
+- The number of consumer threads is the same as the number of producer threads;
+- The total number of produced/consumed elements is 96000, split over the number of threads;
+- The queue size is 4 elements.
+
+Now you can see the graphs of different queues (average working time per one thread in millisecond/number of threads):
+
+![alt text](../Solution/report_data/q1.png)
+
+![alt text](../Solution/report_data/q2.png)
+
+![alt text](../Solution/report_data/q3.png)
+
+![alt text](../Solution/report_data/q4.png)
+
+From the graphs can be see, that there is minimal difference between the queues.
+Let's compare them together:
+
+![alt text](../Solution/report_data/all.png)
+
+The working time of every queue is (almost) same. But we can see slight difference in synchronization.
+We can see it best for the 24 threads. But the difference is really small number of millisecond so we can ignore it.
+
+Also the graph shows that with more threads the time of work for one thread is smaller and smaller. That is expected behavior.
+But also the time for synchronization is smaller and smaller.
+This behavior can be explained that with more Producers the Consumer do not have to wait too much long and conversely.
