@@ -38,7 +38,7 @@
 
 - [ ] Execute the code several times (hint: you can add more producers than consumers if necessary). Is the behavior as expected?
 
-    No, there is deadlock. Also the threads using active waiting (while cycle).
+    No, there is deadlock. Also the threads using busy waiting (while cycle).
 
 - [ ] Remove the initial waiting time before threads start consuming and producing elements. What is the behavior and how can we explain it?
 
@@ -46,7 +46,7 @@
 
 - [ ] Use a large number of produced and consumed elements and remove all waiting times. What happens?
 
-    Again deadlock with active waiting.
+    Again deadlock with busy waiting.
 
 - [ ] What is the consistency model offered by the SharedCounterMonitor class? Let us now imagine that we remove the `synchronized` keyword from the `get()` method. Does this change the consistency model and how? (you may need to wait for the third lecture to answer this question)
 
@@ -70,6 +70,8 @@
 - [ ] Make a copy of the `SyncQueue` class called `FifoSyncQueue` that implements the FIFO-access fairness guarantee (also called bounded waiting in the lecture). Your implementation will use thread-local variables. Justify the correctness of your construction by providing a proof sketch.
 
     [Code is here.](./src/queues/FifoSyncQueue.java)
+    
+    Every thread when steps to the critical section gets number. If it has the smallest number then it can continue, if not then it will wait.
 
 ##### Locks
 
