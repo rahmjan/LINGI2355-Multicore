@@ -58,8 +58,8 @@ In other words, while thread `tA` will see its own writes in the order in which 
 Let's imagine that we have two values `a` and `b`, and two threads `tA` and `tB`.
 Initially, `a==1` and `b==2`.
 `tA` writes `a=3` and `b=4`.
-If `tB` reads `a`, then `b` can very well read `a==1 && b==4`, which means it does not see the writes from `tA` in the order in which they were issued by `tA`.
-The previous example shows that the writes from `tA` might actually *never* be visible to `tB`.
+If `tB` reads `a` then `b`, it can very well see `a==1 && b==4`, which means it does not see the writes from `tA` in the order in which they were issued by `tA`.
+The previous example has even shown us that the writes from `tA` might actually *never* be visible to `tB`.
 
 ### The `volatile` keyword
 
