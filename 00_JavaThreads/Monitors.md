@@ -186,7 +186,7 @@ The same applies for consumers for the `dequeue()` method.
 In order to implement this behavior, it can be convenient to keep some specific state for each thread, accessed while running a method of the shared queue object.
 This can be done using *thread-local* variables, declared as `ThreadLocal<Type>`.
 Note that `Type` must be a reference type (e.g. `Integer`) and cannot be a primitive type (e.g. `int`, `double`).
-The thread local variable, unique to each thread accessing it from a method of the shared object, is accessed using `put()` and `get()` accessors as shown in this example ([see the full code](src/monitors/threadlocal/CounterWithTL.java)):
+The thread local variable, unique to each thread accessing it from a method of the shared object, is accessed using `set()` and `get()` accessors as shown in this example ([see the full code](src/monitors/threadlocal/CounterWithTL.java)):
 
 ```java
 public class CounterWithTL {
