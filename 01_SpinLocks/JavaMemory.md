@@ -58,8 +58,8 @@ In other words, while thread `tA` will see its own writes in the order in which 
 Let's imagine that we have two values `a` and `b`, and two threads `tA` and `tB`.
 Initially, `a==1` and `b==2`.
 `tA` writes `a=3` and `b=4`.
-If `tB` reads `a`, then `b`, if can very well read `a==1 && b==4`, which means it does not see the writes from `tA` in the order in which they were issued by `tA`.
-The previous example has even shown us that the writes from `tA` might actually *never* be visible to `tB`.
+If `tB` reads `a`, then `b` can very well read `a==1 && b==4`, which means it does not see the writes from `tA` in the order in which they were issued by `tA`.
+The previous example shows that the writes from `tA` might actually *never* be visible to `tB`.
 
 ### The `volatile` keyword
 
@@ -99,7 +99,7 @@ volatile int[] myArray;
 
 does **not** declare `myArray` as an array of `volatile int`.
 Only the reference to the array is `volatile`.
-Its element are *ordinary* integers, with no guarantees on the visibility of the writes that they receive.
+Its elements are *ordinary* integers, with no guarantees on the visibility of the writes that they receive.
 This is a common source of bugs!
 
 To use an array of atomic integers, you must declare an array of `AtomicInteger` objects:

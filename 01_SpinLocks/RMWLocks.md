@@ -51,7 +51,7 @@ There are many policies for setting appropriate time ranges, and these depend a 
 In our case, we recommend the following parameters:
 
 - The first sleeping delay is selected in the 0..10 nanoseconds range, after the first failed attempt;
-- After every failed attempt after this, the maximal delay (end of the range) is doubled, e.g. the second sleeping delay is randomly selected in the 0..20 nanoseconds range;
+- Every failed attempt after this, the maximal delay (end of the range) is doubled, e.g. the second sleeping delay is randomly selected in the 0..20 nanoseconds range;
 - If the range upper boundary gets over 1 millisecond (1000 nanoseconds), it is capped to 1000 nanoseconds.
 
 You should use `ThreadLocalRandom` to generate the random delay.
