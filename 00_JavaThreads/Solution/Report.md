@@ -128,7 +128,7 @@ ER: OK
 
     [Code is here.](./src/queues/FifoLockQueue.java)
 
-ER: OK
+ER: The implementation is correct but still requires lot of signaling all and wake up. You could have used a collection of conditions to only wake up the next thread.
 
 - [ ] The `ReentrantLock` constructor admits a boolean named `fairness`. Using the documentation, determine if this would allow solving our FIFO-entry requirement for the shared queue, and how.
 
@@ -173,4 +173,4 @@ This behavior can be explained that with more Producers the Consumer do not have
 
 ER: OK
 
-ER: Final grade is 84/100.
+ER: Final grade is 80/100.
