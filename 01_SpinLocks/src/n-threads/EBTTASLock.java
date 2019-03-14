@@ -5,14 +5,14 @@ public class EBTTASLock implements NThreadsLock {
 
     private AtomicBoolean state = new AtomicBoolean(false);
     private Integer MAX_DELAY = 1000;
-    private ThreadLocal<Integer> DELAY;
+    private ThreadLocal<Integer> DELAY = new ThreadLocal<Integer>();
 
-    public EBTTASLock (int nb_threads){
-        int time = (int)(ThreadLocalRandom.current().nextDouble()*10);
-        DELAY = new ThreadLocal<Integer>();
-    }
+    public EBTTASLock (int nb_threads){ }
 
     public void lock(int i) {
+        int time = (int)(ThreadLocalRandom.current().nextDouble()*10);
+        DELAY.set(time);
+
         while (true) {
             while (state.get()) {}
 
@@ -20,14 +20,14 @@ public class EBTTASLock implements NThreadsLock {
                 return;
 
             try{
-                Thread.sleep(0, DELAY.get());
+                Thread.sleep(0, DELAY.get().intValue());
             }
             catch(InterruptedException e){}
 
-            if (DELAY.get() < MAX_DELAY)
+            if (DELAY.get().compareTo(MAX_DELAY) < 0)
                 DELAY.set(2*DELAY.get());
 
-            if (DELAY.get() > MAX_DELAY)
+            if (DELAY.get().compareTo(MAX_DELAY) > 0)
                 DELAY.set(MAX_DELAY);
         }
     }
