@@ -24,8 +24,7 @@ public class BakeryLock implements NThreadsLock {
         label[in].set(findMaximumElement() + 1);
         for (int k = 0; k < size; k++) {
             while ((k != in) && flag[k].get() && ((label[k].get() < label[in].get()) ||
-                    ((label[k].get() == label[in].get()) && k < in))) {
-            }
+                    ((label[k].get() == label[in].get()) && k < in))) { }
         }
     }
 

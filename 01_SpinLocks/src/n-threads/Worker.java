@@ -17,9 +17,9 @@ public class Worker implements Runnable {
     public void run() {
 
         // Wait before start
-        try {
-            Thread.sleep((int)(ThreadLocalRandom.current().nextDouble()*30));
-        } catch (InterruptedException e) {}
+//        try {
+//            Thread.sleep((int)(ThreadLocalRandom.current().nextDouble()*30));
+//        } catch (InterruptedException e) {}
 
         // Work
         doWork();
@@ -32,9 +32,9 @@ public class Worker implements Runnable {
             safe.enterCS(workerID);
 
             // Work in critical section
-            try {
-                Thread.sleep((int)(ThreadLocalRandom.current().nextDouble()*10));
-            } catch (InterruptedException e) {}
+//            try {
+//                Thread.sleep((int)(ThreadLocalRandom.current().nextDouble()*10));
+//            } catch (InterruptedException e) {}
 
 //            System.out.println("ID: " + workerID + " position: " + i);
 
@@ -59,6 +59,18 @@ public class Worker implements Runnable {
 
             case 1:
                 l = new BakeryLock(NB_WORKERS);
+                break;
+
+            case 2:
+                l = new TASLock(NB_WORKERS);
+                break;
+
+            case 3:
+                l = new TTASLock(NB_WORKERS);
+                break;
+
+            case 4:
+                l = new EBTTASLock(NB_WORKERS);
                 break;
         }
 

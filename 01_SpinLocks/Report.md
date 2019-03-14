@@ -9,4 +9,9 @@
     [The code is here.](./src/2-threads/SafePetersonLock.java)
 
 - [ ] Implement the Filter lock and test its correctness. *(link to your code)*
+
+    [The code is here.](./src/n-threads/FilterLock.java)
+
 - [ ] Implement the Bakery lock and test its correctness. *(link to your code)*
+
+    [The code is here.](./src/n-threads/BakeryLock.java)
