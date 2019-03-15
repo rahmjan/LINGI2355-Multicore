@@ -72,6 +72,18 @@ public class Worker implements Runnable {
             case 4:
                 l = new EBTTASLock(NB_WORKERS);
                 break;
+
+            case 5:
+                l = new AndersonLock(NB_WORKERS);
+                break;
+
+            case 6:
+                l = new AndersonPaddedLock(NB_WORKERS);
+                break;
+
+            case 7:
+                l = new CLHLock(NB_WORKERS);
+                break;
         }
 
         Thread[] workers = new Thread[NB_WORKERS];
