@@ -117,6 +117,6 @@ public class Worker implements Runnable {
         }
 
         // print statistic
-        System.out.println("Threads:\t" + NB_WORKERS + "\tWorking_time:\t" + ((Worker.totalWorkingTime-Worker.totalSynchTime)/NB_WORKERS) + "\tSynch_time:\t" + (Worker.totalSynchTime/NB_WORKERS) + "\tCounter:\t" + Worker.counter.get() );
+        System.out.println("Threads:\t" + NB_WORKERS + "\tAll_time:\t" + (Worker.totalWorkingTime/NB_WORKERS) + "\tWorking_time:\t" + ((Worker.totalWorkingTime-Worker.totalSynchTime)/NB_WORKERS) + "\tSynch_time:\t" + (Worker.totalSynchTime/NB_WORKERS) + "\tCounter:\t" + Worker.counter.get() );
     }
 }
