@@ -40,7 +40,7 @@ plot \
 	'OptimisticLockedList.dat' using ($2):($6):($7) with yerrorbars ls 3 title "Optimistic", \
 	'' using ($2):($6):($7) with lines ls 3 notitle, \
 	'LazyList.dat' using ($2):($6):($7) with yerrorbars ls 4 title "Lazy", \
-	'' using (($2):($6):($7) with lines ls 4 notitle, \
+	'' using ($2):($6):($7) with lines ls 4 notitle, \
 	'LockFreeList.dat' using ($2):($6):($7) with yerrorbars ls 5 title "Lock-free", \
 	'' using ($2):($6):($7) with lines ls 5 notitle
 
