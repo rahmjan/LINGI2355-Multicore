@@ -11,13 +11,16 @@ public class Benchmark {
 		if (name.equals("CoarseGrainLockedList")) {
 			return new CoarseGrainLockedList();
 		} 
-//		else if (name.equals("FineGrainLockedList")) {
-//			return new FineGrainLockedList();
-//		} else if (name.equals("OptimisticLockedList")) {
-//			return new OptimisticLockedList();
-//		} else if (name.equals("LazyList")) {
+		else if (name.equals("FineGrainLockedList")) {
+			return new FineGrainLockedList();
+		}
+		else if (name.equals("OptimisticLockedList")) {
+			return new OptimisticLockedList();
+		}
+//		else if (name.equals("LazyList")) {
 //			return new LazyList();
-//		} else if (name.equals("LockFreeList")) {
+//		}
+//		else if (name.equals("LockFreeList")) {
 //			return new LockFreeList();
 //		} 
 		else {
@@ -35,7 +38,7 @@ public class Benchmark {
 
 	private static void performBenchmark(BenchmarkConfiguration config, boolean silent, int[] threadCounts) {
 
-		for (int listFlavorIndex = 0; listFlavorIndex < config.listFlavors.length; listFlavorIndex++) {
+		for (int listFlavorIndex = 0; listFlavorIndex < config.listFlavors.length-1; listFlavorIndex++) {
 
 			for (int scale = 0; scale < threadCounts.length; scale++) {
 

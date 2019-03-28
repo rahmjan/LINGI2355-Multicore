@@ -19,11 +19,12 @@ public class BenchmarkConfiguration {
 	
 	// uncomment to add new list types
 	public String[] listFlavors = {
-			"CoarseGrainLockedList"
-//			,"FineGrainLockedList"
-//			,"OptimisticLockedList"
-//			,"LazyList"
-//			,"LockFreeList"
+//			"CoarseGrainLockedList",
+//			"FineGrainLockedList",
+			"OptimisticLockedList",
+//			"LazyList",
+//			"LockFreeList",
+			"null"
 	};
 	
 	public int samples = 10;
