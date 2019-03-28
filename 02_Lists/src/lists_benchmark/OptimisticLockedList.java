@@ -4,8 +4,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class OptimisticLockedList implements Set {
 
-    private final ReentrantLock lock;
-
     private class Node {
         public int value;
         public Node next;
@@ -21,7 +19,6 @@ public class OptimisticLockedList implements Set {
     private Node head, tail;
 
     public OptimisticLockedList() {
-        lock = new ReentrantLock();
         // create head and tail nodes
         head = new Node(Integer.MIN_VALUE);
         tail = new Node(Integer.MAX_VALUE);
@@ -115,20 +112,30 @@ public class OptimisticLockedList implements Set {
 
     @Override
     public boolean contains(int value) {
-        boolean ret = false ;
+        while (true) {
+            Node pred = this.head;
+            Node curr = pred.next;
 
-        lock.lock();
-        try {
-            Node pred = get_pred(value);
+            while (curr.value <= value) {
+                if (curr.value == value){
+                    break;
+                }
+                pred = curr;
+                curr = curr.next;
+            }
 
-            // check if the key is here
-            ret = (pred.next.value == value);
+            try {
+                pred.lock();
+                curr.lock();
 
-        } finally {
-            lock.unlock();
+                if (validate(pred, curr)) {
+                    return (pred.next.value == value);
+                }
+            } finally {
+                pred.unlock();
+                curr.unlock();
+            }
         }
-
-        return ret;
     }
 
     // Note this method is not thread safe and should not be called concurrently

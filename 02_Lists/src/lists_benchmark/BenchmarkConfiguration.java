@@ -21,9 +21,9 @@ public class BenchmarkConfiguration {
 	public String[] listFlavors = {
 //			"CoarseGrainLockedList",
 //			"FineGrainLockedList",
-			"OptimisticLockedList",
+//			"OptimisticLockedList",
 //			"LazyList",
-//			"LockFreeList",
+			"LockFreeList",
 			"null"
 	};
 	

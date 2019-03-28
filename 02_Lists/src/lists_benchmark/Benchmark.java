@@ -17,12 +17,12 @@ public class Benchmark {
 		else if (name.equals("OptimisticLockedList")) {
 			return new OptimisticLockedList();
 		}
-//		else if (name.equals("LazyList")) {
-//			return new LazyList();
-//		}
-//		else if (name.equals("LockFreeList")) {
-//			return new LockFreeList();
-//		} 
+		else if (name.equals("LazyList")) {
+			return new LazyList();
+		}
+		else if (name.equals("LockFreeList")) {
+			return new LockFreeList();
+		}
 		else {
 			System.err.println("No implementation of a set with "+name+" class name.");
 			System.exit(-1);

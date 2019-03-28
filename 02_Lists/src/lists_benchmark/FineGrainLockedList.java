@@ -102,10 +102,20 @@ public class FineGrainLockedList implements Set {
 
     @Override
     public boolean contains(int value) {
-
+        boolean ret = false;
+        Node pred = null, curr = null;
         // check if the key is here
-        Node pred = get_pred(value);
-        boolean ret = (pred.next.value == value);
+        try {
+            pred = get_pred(value);
+            pred.lock();
+            curr = pred.next;
+            curr.lock();
+            ret = (pred.next.value == value);
+
+        } finally {
+            curr.unlock();
+            pred.unlock();
+        }
 
         return ret;
     }
