@@ -14,15 +14,15 @@ public class BenchmarkConfiguration {
 	public boolean useWarmupPhase = true;
 
 	public int[] threadCountsForWarmup = {4};
-	public int[] threadCounts = {1, 2, 3, 4, 5, 6, 7, 8}; // for pascaline
-	//public int[] threadCounts = {1, 2, 4, 6, 8, 12, 16, 20, 24}; // for burattini
+//	public int[] threadCounts = {1, 2, 3, 4, 5, 6, 7, 8}; // for pascaline
+	public int[] threadCounts = {1, 2, 4, 6, 8, 12, 16, 20, 24}; // for burattini
 	
 	// uncomment to add new list types
 	public String[] listFlavors = {
-//			"CoarseGrainLockedList",
-//			"FineGrainLockedList",
-//			"OptimisticLockedList",
-//			"LazyList",
+			"CoarseGrainLockedList",
+			"FineGrainLockedList",
+			"OptimisticLockedList",
+			"LazyList",
 			"LockFreeList",
 			"null"
 	};
