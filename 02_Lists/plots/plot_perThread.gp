@@ -33,16 +33,16 @@ set style line 5 lt 2 lc 5 lw 2 pt 5 ps 3
 !grep LockFreeList output.dat > LockFreeList.dat
 
 plot \
-	'CoarseGrainLockedList.dat' using ($2):($6):($7) with yerrorbars ls 1 title "Coarse-grain", \
-	'' using ($2):($6):($7) with lines ls 1 notitle , \
-	'FineGrainLockedList.dat' using ($2):($6):($7) with yerrorbars ls 2 title "Fine-grain", \
-	'' using ($2):($6):($7) with lines ls 2 notitle, \
-	'OptimisticLockedList.dat' using ($2):($6):($7) with yerrorbars ls 3 title "Optimistic", \
-	'' using ($2):($6):($7) with lines ls 3 notitle, \
-	'LazyList.dat' using ($2):($6):($7) with yerrorbars ls 4 title "Lazy", \
-	'' using ($2):($6):($7) with lines ls 4 notitle, \
-	'LockFreeList.dat' using ($2):($6):($7) with yerrorbars ls 5 title "Lock-free", \
-	'' using ($2):($6):($7) with lines ls 5 notitle
+	'CoarseGrainLockedList.dat' using ($2):($5):($6) with yerrorbars ls 1 title "Coarse-grain", \
+	'' using ($2):($5):($6) with lines ls 1 notitle , \
+	'FineGrainLockedList.dat' using ($2):($5):($6) with yerrorbars ls 2 title "Fine-grain", \
+	'' using ($2):($5):($6) with lines ls 2 notitle, \
+	'OptimisticLockedList.dat' using ($2):($5):($6) with yerrorbars ls 3 title "Optimistic", \
+	'' using ($2):($5):($6) with lines ls 3 notitle, \
+	'LazyList.dat' using ($2):($5):($6) with yerrorbars ls 4 title "Lazy", \
+	'' using ($2):($5):($6) with lines ls 4 notitle, \
+	'LockFreeList.dat' using ($2):($5):($6) with yerrorbars ls 5 title "Lock-free", \
+	'' using ($2):($5):($6) with lines ls 5 notitle
 
 # remove individual files
 !rm CoarseGrainLockedList.dat
