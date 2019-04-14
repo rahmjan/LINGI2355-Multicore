@@ -54,6 +54,8 @@ public class OptimisticLockedList implements Set {
             Node next = pred.next;
 
             while (next.value <= value) {
+				// ER: the following if/return is incorrect. You cannot return before taking the locks. 
+				// You may be looking at a node that has already been removed and you will break linearizability.
                 if (next.value == value){
                     return false;
                 }

@@ -73,6 +73,7 @@ public class LockFreeList implements Set {
                     succ = curr.next.get(marked);
                 }
 
+				// ER: why not simply use >= ?
                 if ((curr.value == value && curr.value == value)
                         || curr.value > value)
                     return new Window(pred, curr);

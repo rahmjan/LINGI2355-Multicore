@@ -50,6 +50,8 @@ public class LazyList implements Set {
             Node next = pred.next;
 
             while (next.value <= value) {
+				
+				// ER: same problem as for the optimistic list
                 if (next.value == value){
                     return false;
                 }
