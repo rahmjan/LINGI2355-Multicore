@@ -57,18 +57,18 @@ public class BenchmarkConfiguration {
 		 * - percentage of ADD operations (double)
 		 * - percentage of REMOVE operations (double)
 		 * - percentage of LOOKUP operations (double)
-		 * - number of elements to add before benchmark (integer) 
+		 * - number of elements to add before benchmark (integer)
 		 * 	(note: the actual number of elements in the list will depend on the success rate of insertions)
 		 * - use a JIT warmup phase with 8 threads (boolean) -- recommended
 		 * - number of samples for each measurements (integer) -- 10 recommended
 		 * - number of threads to use (list of integers) -- e.g. 2 4 8 for three configurations
 		 */
-		
+
 		// if there is nothing on the command line, use the default configuration
 		if (args.length == 0) {
-			System.out.println("Using default configuration parameters.");
+			System.out.println("# Using default configuration parameters.");
 		} else {
-			System.out.println("Using provided configuration parameters.");
+			System.out.println("# Using provided configuration parameters.");
 			int index = 0;
 			minimum = Integer.parseInt(args[index]);
 			index++;
