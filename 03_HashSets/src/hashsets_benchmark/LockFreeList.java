@@ -46,7 +46,7 @@ public class LockFreeList {
         tail = new Node(value, Integer.MAX_VALUE);
 
         // link tail as successor of head node
-        while (!head.next.compareAndSet(null, tail, false, false));
+        head.next.set(tail, false);
     }
 
     private boolean validate(Node pred, Node curr) {
