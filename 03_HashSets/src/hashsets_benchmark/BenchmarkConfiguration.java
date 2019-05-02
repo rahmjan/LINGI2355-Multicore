@@ -38,29 +38,30 @@ public class BenchmarkConfiguration {
 		
 	// uncomment to add new list types
 	public String[] setFlavors= {
-			"JavaConcurrentHashMapWrapper"
-//			,"CoarseGrainLockedHashSet"
-//			,"FineGrainLockedHashSet"
-//			,"RefinableFineGrainLockedHashSet"
-//			,"LockFreeHashSet"
+//			"JavaConcurrentHashMapWrapper",
+			"CoarseGrainLockedHashSet",
+//			"FineGrainLockedHashSet",
+//			"RefinableFineGrainLockedHashSet",
+//			"LockFreeHashSet",
+			"null"
 	};
 	
 	public Set setFactory(String name) {
 		if (name.equals("JavaConcurrentHashMapWrapper")) {
 			return new JavaConcurrentHashMapWrapper(starting_buckets);
 		} 
-//		else if (name.equals("CoarseGrainLockedHashSet")) {
-//			return new CoarseGrainLockedHashSet(starting_buckets);
-//		} 
-//		else if (name.equals("FineGrainLockedHashSet")) {
-//			return new FineGrainLockedHashSet(starting_buckets);
-//		}
+		else if (name.equals("CoarseGrainLockedHashSet")) {
+			return new CoarseGrainLockedHashSet(starting_buckets);
+		}
+		else if (name.equals("FineGrainLockedHashSet")) {
+			return new FineGrainLockedHashSet(starting_buckets);
+		}
 //		else if (name.equals("RefinableFineGrainLockedHashSet")) {
 //			return new RefinableFineGrainLockedHashSet(starting_buckets);
 //		}
-//		else if (name.equals("LockFreeHashSet")) {
-//			return new LockFreeHashSet(starting_buckets);
-//		}
+		else if (name.equals("LockFreeHashSet")) {
+			return new LockFreeHashSet(starting_buckets);
+		}
 		else {
 			System.err.println("No implementation of a set with "+name+" class name.");
 			System.exit(-1);

@@ -15,7 +15,7 @@ public class Benchmark {
 
 	private static void performBenchmark(BenchmarkConfiguration config, boolean silent, int[] threadCounts) {
 
-		for (int setFlavorIndex = 0; setFlavorIndex < config.setFlavors.length; setFlavorIndex++) {
+		for (int setFlavorIndex = 0; setFlavorIndex < config.setFlavors.length-1; setFlavorIndex++) {
 
 			for (int scale = 0; scale < threadCounts.length; scale++) {
 
