@@ -93,7 +93,7 @@ public class LockFreeHashSet implements Set {
 
     private void resizeCheck() {
         if (setSize.get() / tableSize.get() >= 4){ // then resize
-            if (table.length <= tableSize.get()*2) {
+            if (table.length >= tableSize.get()*2) {
                 tableSize.set(tableSize.get() * 2);
                 numOfResize.incrementAndGet();
             }
