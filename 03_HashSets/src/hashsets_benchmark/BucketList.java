@@ -20,16 +20,15 @@ public class BucketList /* implements Set */ {
 		}
 		return result;
 	}
-	public int makeOrdinaryKey(int value) {
+	public static int makeOrdinaryKey(int value) {
 		int code = value & MASK; // take 3 lowest bytes
 		return reverse(code | HI_MASK);
 	}
-	private static int makeSentinelKey(int value) {
+	public static int makeSentinelKey(int value) {
 		return reverse(value & MASK);
 	}
 	public static int hashCode(int value) {
 		return value & MASK;
 	}
 	// End provided code
-
 }

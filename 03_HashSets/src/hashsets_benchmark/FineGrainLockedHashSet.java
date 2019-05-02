@@ -83,7 +83,7 @@ public class FineGrainLockedHashSet implements Set {
     }
 
     private boolean policy(){
-        return (SetSize / table.length) >= 4;
+        return (this.size() / table.length) >= 4;
     }
 
     private void resize(int depth, List[] oldTab) {
@@ -102,9 +102,10 @@ public class FineGrainLockedHashSet implements Set {
     private void resize() { resize(0, table); }
 
     private void sequentialResize() {
-        int newCapacity = oldCapacity*2;
+        int newCapacity =  table.length*2;
         List[] oldTable = table;
         table = new List[newCapacity];
+        sizeOfList = new int[newCapacity];
 
         for (int i = 0; i < newCapacity; i++) {
             table[i] = new LinkedList<Integer>();
@@ -114,6 +115,7 @@ public class FineGrainLockedHashSet implements Set {
             for (Integer x : bucket){
                 int tabHash = BucketList.hashCode(x) % table.length;
                 table[tabHash].add(x);
+                sizeOfList[tabHash]++;
             }
         }
 

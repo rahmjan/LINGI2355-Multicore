@@ -1,46 +1,102 @@
 package hashsets_benchmark;
 
-import java.util.concurrent.ConcurrentHashMap;
 import hashsets_benchmark.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class LockFreeHashSet implements Set {
-
-    private ConcurrentHashMap<Integer, Integer> set ;
-    // note that the second field will always be the same as the key.
-
-    public LockFreeHashSet () {
-        set = new ConcurrentHashMap<Integer, Integer>();
-    }
+    private LockFreeList[] table;
+    private AtomicInteger tableSize;
+    private AtomicInteger setSize;
+    private AtomicInteger numOfResize;
 
     public LockFreeHashSet (int numberOfBuckets) {
-        // Note: the argument is actually the number of buckets, so we use it to
-        // compute an approximate number of elements (with 4 elements per bucket).
-        int expectedSize = 4*numberOfBuckets;
-        set = new ConcurrentHashMap<Integer, Integer>(expectedSize);
+        table = new LockFreeList[numberOfBuckets];
+        table[0] = new LockFreeList();
+        tableSize = new AtomicInteger(2);
+        setSize = new AtomicInteger(0);
+        numOfResize = new AtomicInteger(0);
     }
 
     @Override
     public boolean add(int value) {
-        return (set.putIfAbsent(value, value) != null);
+        int hash = BucketList.hashCode(value);
+        int bucket = hash % tableSize.get();
+        int key = BucketList.makeOrdinaryKey(value);
+        LockFreeList list = getBucketList(bucket);
+
+        if (!list.add(value, key))
+            return false;
+
+        resizeCheck();
+        setSize.incrementAndGet();
+        return true;
     }
 
     @Override
     public boolean remove(int value) {
-        return (set.remove(value) != null);
+        int hash = BucketList.hashCode(value);
+        int bucket = hash % tableSize.get();
+        int key = BucketList.makeOrdinaryKey(value);
+        LockFreeList list = getBucketList(bucket);
+
+        boolean ret = list.remove(key);
+        if (ret){
+            setSize.decrementAndGet();
+        }
+        return ret;
     }
 
     @Override
     public boolean contains(int value) {
-        return (set.contains(value));
+        int hash = BucketList.hashCode(value);
+        int bucket = hash % tableSize.get();
+        int key = BucketList.makeOrdinaryKey(value);
+        LockFreeList list = getBucketList(bucket);
+
+        return list.contains(key);
     }
 
     @Override
     public int size() {
-        return (set.size());
+        return setSize.get();
     }
 
     @Override
     public int getResizesCount() {
-        return 0; // Unknown
+        return numOfResize.get();
+    }
+
+    private LockFreeList getBucketList(int myBucket){
+        if (table[myBucket] == null)
+            initializeBucket(myBucket);
+        return table[myBucket];
+    }
+
+    private void initializeBucket(int bucket) {
+        int parent = getParent(bucket);
+
+        if (table[parent] == null)
+            initializeBucket(parent);
+
+        int key = BucketList.makeSentinelKey(bucket);
+        table[bucket] = new LockFreeList(table[parent], bucket, key);
+    }
+
+    private int getParent(int myBucket){
+        int parent = tableSize.get();
+        do {
+            parent = parent >> 1;
+        } while (parent > myBucket);
+        parent = myBucket - parent;
+        return parent;
+    }
+
+    private void resizeCheck() {
+        if (setSize.get() / tableSize.get() >= 4){ // then resize
+            if (table.length <= tableSize.get()*2) {
+                tableSize.set(tableSize.get() * 2);
+                numOfResize.incrementAndGet();
+            }
+        }
     }
 }
