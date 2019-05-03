@@ -41,8 +41,9 @@ public class BenchmarkConfiguration {
 //			"JavaConcurrentHashMapWrapper",
 //			"CoarseGrainLockedHashSet",
 //			"FineGrainLockedHashSet",
+			"FineGrainLockedHashSetWithLocks",
 //			"RefinableFineGrainLockedHashSet",
-			"LockFreeHashSet",
+//			"LockFreeHashSet",
 			"null"
 	};
 	
@@ -55,6 +56,9 @@ public class BenchmarkConfiguration {
 		}
 		else if (name.equals("FineGrainLockedHashSet")) {
 			return new FineGrainLockedHashSet(starting_buckets);
+		}
+		else if (name.equals("FineGrainLockedHashSetWithLocks")) {
+			return new FineGrainLockedHashSetWithLocks(starting_buckets);
 		}
 //		else if (name.equals("RefinableFineGrainLockedHashSet")) {
 //			return new RefinableFineGrainLockedHashSet(starting_buckets);

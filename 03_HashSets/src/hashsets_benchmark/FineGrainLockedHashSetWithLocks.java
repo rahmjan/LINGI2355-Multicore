@@ -2,21 +2,22 @@ package hashsets_benchmark;
 
 import hashsets_benchmark.Set;
 import java.util.*;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class FineGrainLockedHashSet implements Set {
-    private Object[] lock;
+public class FineGrainLockedHashSetWithLocks implements Set {
+    private ReentrantReadWriteLock[] lock;
     private List[] table;
     private AtomicInteger setSize;
     private int numOfResize = 0;
 
-    public FineGrainLockedHashSet (int numberOfBuckets) {
+    public FineGrainLockedHashSetWithLocks (int numberOfBuckets) {
         table = new List[numberOfBuckets];
-        lock = new Object[numberOfBuckets];
+        lock = new ReentrantReadWriteLock[numberOfBuckets];
         setSize = new AtomicInteger(0);
 
         for (int i = 0; i < numberOfBuckets; i++) {
-            lock[i] = new Object();
+            lock[i] = new ReentrantReadWriteLock();
             table[i] = new LinkedList<Integer>();
         }
     }
@@ -30,7 +31,8 @@ public class FineGrainLockedHashSet implements Set {
             resize();
         }
 
-        synchronized (lock[keyHash]) {
+        lock[keyHash].writeLock().lock();
+        try{
             if (table[tabHash].contains(value)){
                 return false;
             }
@@ -41,6 +43,9 @@ public class FineGrainLockedHashSet implements Set {
             }
             return ret;
         }
+        finally {
+            lock[keyHash].writeLock().unlock();
+        }
     }
 
     @Override
@@ -48,12 +53,16 @@ public class FineGrainLockedHashSet implements Set {
         int tabHash = BucketList.hashCode(value) % table.length;
         int keyHash = BucketList.hashCode(value) % lock.length;
 
-        synchronized (lock[keyHash]) {
+        lock[keyHash].writeLock().lock();
+        try{
             boolean ret = table[tabHash].remove((Integer)value);
             if (ret){
                 setSize.decrementAndGet();
             }
             return ret;
+        }
+        finally {
+            lock[keyHash].writeLock().unlock();
         }
     }
 
@@ -62,8 +71,12 @@ public class FineGrainLockedHashSet implements Set {
         int tabHash = BucketList.hashCode(value) % table.length;
         int keyHash = BucketList.hashCode(value) % lock.length;
 
-        synchronized (lock[keyHash]) {
+        lock[keyHash].readLock().lock();
+        try{
             return table[tabHash].contains(value);
+        }
+        finally {
+            lock[keyHash].readLock().unlock();
         }
     }
 
@@ -82,7 +95,8 @@ public class FineGrainLockedHashSet implements Set {
     }
 
     private void resize(int depth, List[] oldTab) {
-        synchronized (lock[depth]) {
+        lock[depth].writeLock().lock();
+        try{
             if (depth == 0 && oldTab != table)
                 return;
 
@@ -91,6 +105,9 @@ public class FineGrainLockedHashSet implements Set {
                 resize(next, oldTab);
             else
                 sequentialResize();
+        }
+        finally {
+            lock[depth].writeLock().unlock();
         }
     }
 
