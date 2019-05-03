@@ -10,9 +10,9 @@ public class LockFreeHashSet implements Set {
     private AtomicInteger numOfResize;
 
     public LockFreeHashSet (int numberOfBuckets) {
-        table = new LockFreeList[numberOfBuckets];
+        table = new LockFreeList[256];
         table[0] = new LockFreeList();
-        tableSize = new AtomicInteger(2);
+        tableSize = new AtomicInteger(numberOfBuckets);
         setSize = new AtomicInteger(0);
         numOfResize = new AtomicInteger(0);
     }

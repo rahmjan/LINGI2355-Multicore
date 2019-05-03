@@ -16,6 +16,7 @@ public class LockFreeList {
 
     private class Node {
         public boolean marked;
+        public boolean sentiel;
         public int value;
         public int key;
         public AtomicMarkableReference<Node> next;
@@ -23,6 +24,7 @@ public class LockFreeList {
             this.value = value;
             this.key = key;
             marked = false;
+            sentiel = false;
             this.next = new AtomicMarkableReference<Node>(null, false);
         }
     }
@@ -39,14 +41,18 @@ public class LockFreeList {
     }
 
     public LockFreeList(LockFreeList parent, int value, int key) {
-        // create head and tail nodes
-        head = parent.tail;
-        head.value = value;
-        head.key = key;
-        tail = new Node(value, Integer.MAX_VALUE);
+        // Insert sentiel node
+        Node node = new Node(value, key);
+        node.sentiel = true;
+        if (!parent.addSentielNode(node)){
+            System.out.println("ERROR: Sentiel node was not added: " + node.value + "  " + node.key);
+        }
 
-        // link tail as successor of head node
-        head.next.set(tail, false);
+        // Set Head
+        this.head = node;
+
+        // Set Tail
+        this.tail = parent.tail; // is it not used?
     }
 
     private boolean validate(Node pred, Node curr) {
@@ -121,6 +127,9 @@ public class LockFreeList {
         while (curr.key <= key) {
             if (key == curr.key)
                 break;
+            if (curr.sentiel){
+                System.out.println("We passed sentiel....!!!");
+            }
             curr = curr.next.getReference();
         }
 
@@ -142,4 +151,18 @@ public class LockFreeList {
         return size;
     }
 
+    private boolean addSentielNode(Node n) {
+        while (true) {
+            Window window = find(head, n.key);
+            Node pred = window.pred, curr = window.curr;
+
+            if (curr.key == n.key)
+                return false;
+
+            n.next = new AtomicMarkableReference<Node>(curr, false);
+
+            if (pred.next.compareAndSet(curr, n, false, false))
+                return true;
+        }
+    }
 }
