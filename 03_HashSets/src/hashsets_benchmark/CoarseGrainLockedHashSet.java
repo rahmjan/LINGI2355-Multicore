@@ -21,35 +21,33 @@ public class CoarseGrainLockedHashSet implements Set {
 
     @Override
     public boolean add(int value) {
-        int tabHash = BucketList.hashCode(value) % table.length;
+        boolean result = false;
+        lock.lock();
+        try {
+            int tabHash = BucketList.hashCode(value) % table.length;
+
+            if (!table[tabHash].contains(value)) {
+                table[tabHash].add(value);
+                result = true;
+                SetSize++;
+            }
+        }
+        finally {
+            lock.unlock();
+        }
 
         if (policy()){
             resize();
         }
 
-        lock.lock();
-        try {
-            if (table[tabHash].contains(value)){
-                return false;
-            }
-
-            boolean ret = table[tabHash].add(value);
-            if (ret){
-                SetSize++;
-            }
-            return ret;
-        }
-        finally {
-            lock.unlock();
-        }
+        return result;
     }
 
     @Override
     public boolean remove(int value) {
-        int tabHash = BucketList.hashCode(value) % table.length;
-
         lock.lock();
         try {
+            int tabHash = BucketList.hashCode(value) % table.length;
             boolean ret = table[tabHash].remove((Integer)value);
             if (ret){
                 SetSize--;
@@ -63,10 +61,9 @@ public class CoarseGrainLockedHashSet implements Set {
 
     @Override
     public boolean contains(int value) {
-        int tabHash = BucketList.hashCode(value) % table.length;
-
         lock.lock();
         try {
+            int tabHash = BucketList.hashCode(value) % table.length;
             return table[tabHash].contains(value);
         }
         finally {

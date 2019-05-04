@@ -23,32 +23,32 @@ public class FineGrainLockedHashSet implements Set {
 
     @Override
     public boolean add(int value) {
-        int tabHash = BucketList.hashCode(value) % table.length;
+        boolean ret = false;
         int keyHash = BucketList.hashCode(value) % lock.length;
+
+        synchronized (lock[keyHash]) {
+            int tabHash = BucketList.hashCode(value) % table.length;
+
+            if (!table[tabHash].contains(value)){
+                table[tabHash].add(value);
+                ret = true;
+                setSize.incrementAndGet();
+            }
+        }
 
         if (policy()){
             resize();
         }
 
-        synchronized (lock[keyHash]) {
-            if (table[tabHash].contains(value)){
-                return false;
-            }
-
-            boolean ret = table[tabHash].add(value);
-            if (ret){
-                setSize.incrementAndGet();
-            }
-            return ret;
-        }
+        return ret;
     }
 
     @Override
     public boolean remove(int value) {
-        int tabHash = BucketList.hashCode(value) % table.length;
         int keyHash = BucketList.hashCode(value) % lock.length;
 
         synchronized (lock[keyHash]) {
+            int tabHash = BucketList.hashCode(value) % table.length;
             boolean ret = table[tabHash].remove((Integer)value);
             if (ret){
                 setSize.decrementAndGet();
@@ -59,10 +59,10 @@ public class FineGrainLockedHashSet implements Set {
 
     @Override
     public boolean contains(int value) {
-        int tabHash = BucketList.hashCode(value) % table.length;
         int keyHash = BucketList.hashCode(value) % lock.length;
 
         synchronized (lock[keyHash]) {
+            int tabHash = BucketList.hashCode(value) % table.length;
             return table[tabHash].contains(value);
         }
     }

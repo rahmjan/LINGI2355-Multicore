@@ -38,12 +38,12 @@ public class BenchmarkConfiguration {
 		
 	// uncomment to add new list types
 	public String[] setFlavors= {
-//			"JavaConcurrentHashMapWrapper",
-//			"CoarseGrainLockedHashSet",
-//			"FineGrainLockedHashSet",
+			"JavaConcurrentHashMapWrapper",
+			"CoarseGrainLockedHashSet",
+			"FineGrainLockedHashSet",
 			"FineGrainLockedHashSetWithLocks",
 //			"RefinableFineGrainLockedHashSet",
-//			"LockFreeHashSet",
+			"LockFreeHashSet",
 			"null"
 	};
 	

@@ -42,11 +42,7 @@ public class LockFreeList {
 
     public LockFreeList(LockFreeList parent, int value, int key) {
         // Insert sentiel node
-        Node node = new Node(value, key);
-        node.sentiel = true;
-        if (!parent.addSentielNode(node)){
-            System.out.println("ERROR: Sentiel node was not added: " + node.value + "  " + node.key);
-        }
+        Node node = parent.addSentielNode(value, key);
 
         // Set Head
         this.head = node;
@@ -121,20 +117,9 @@ public class LockFreeList {
     }
 
     public boolean contains(int key) {
-        boolean marked[] = new boolean[1];
-        Node curr = this.head;
-
-        while (curr.key <= key) {
-            if (key == curr.key)
-                break;
-            if (curr.sentiel){
-                System.out.println("We passed sentiel....!!!");
-            }
-            curr = curr.next.getReference();
-        }
-
-        curr.next.get(marked);
-        return (key == curr.key && !marked[0]);
+        Window window = find(head, key);
+        Node curr = window.curr;
+        return (curr.key == key);
     }
 
     // Note this method is not thread safe and should not be called concurrently
@@ -151,18 +136,22 @@ public class LockFreeList {
         return size;
     }
 
-    private boolean addSentielNode(Node n) {
+    private Node addSentielNode(int value, int key) {
         while (true) {
-            Window window = find(head, n.key);
+            Window window = find(head, key);
             Node pred = window.pred, curr = window.curr;
 
-            if (curr.key == n.key)
-                return false;
+            if (curr.key == key) {
+                return curr;
+            }
 
-            n.next = new AtomicMarkableReference<Node>(curr, false);
+            Node node = new Node(value, key);
+            node.sentiel = true;
+            node.next = new AtomicMarkableReference<Node>(curr, false);
 
-            if (pred.next.compareAndSet(curr, n, false, false))
-                return true;
+            if (pred.next.compareAndSet(curr, node, false, false)){
+                return node;
+            }
         }
     }
 }
