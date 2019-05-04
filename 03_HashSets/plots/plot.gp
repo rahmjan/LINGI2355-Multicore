@@ -22,7 +22,7 @@ set mytics 2
 # prepare individual files
 !grep JavaConcurrentHashMapWrapper output.dat > JavaConcurrentHashMapWrapper.dat
 !grep CoarseGrainLockedHashSet output.dat > CoarseGrainLockedHashSet.dat
-!grep FineGrainLockedHashSet output.dat > FineGrainLockedHashSet.dat
+!grep -w FineGrainLockedHashSet output.dat > FineGrainLockedHashSet.dat
 !grep RefinableFineGrainLockedHashSet output.dat > RefinableFineGrainLockedHashSet.dat
 !grep LockFreeHashSet output.dat > LockFreeHashSet.dat
 !grep FineGrainLockedHashSetWithLocks output.dat > FineGrainLockedHashSetWithLocks.dat
@@ -50,9 +50,9 @@ plot \
 	'RefinableFineGrainLockedHashSet.dat' using ($2):($4):($5) with yerrorbars ls 4 title "Fine lock refinable", \
 	'' using ($2):($4) with lines ls 4 notitle, \
 	'LockFreeHashSet.dat' using ($2):($4):($5) with yerrorbars ls 5 title "Lock-free", \
-	'' using ($2):($4) with lines ls 5 notitle
+	'' using ($2):($4) with lines ls 5 notitle, \
 	'FineGrainLockedHashSetWithLocks.dat' using ($2):($4):($5) with yerrorbars ls 6 title "Fine lock Read/Write", \
-     	'' using ($2):($4) with lines ls 6 notitle , \
+     	'' using ($2):($4) with lines ls 6 notitle
 
 # remove individual files
 !rm JavaConcurrentHashMapWrapper.dat
