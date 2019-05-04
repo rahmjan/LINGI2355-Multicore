@@ -110,6 +110,13 @@ public class Benchmark {
 	}
 
 	public static void main(String[] args) {
+
+		if (args.length != 0 && args[0].equals("unit_tests")){
+			UnitTests tests = new UnitTests();
+			tests.do_unit_tests();
+			return;
+		}
+
 		BenchmarkConfiguration config = new BenchmarkConfiguration(args);
 
 		if (config.useWarmupPhase) {
