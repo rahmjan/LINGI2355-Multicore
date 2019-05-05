@@ -1,0 +1,99 @@
+# Using default configuration parameters.
+# Warming up the JIT compiler, be patient...
+# Testing JavaConcurrentHashMapWrapper with 4 threads (3000 ms, 3 times)
+# Testing CoarseGrainLockedHashSet with 4 threads (3000 ms, 3 times)
+# Testing FineGrainLockedHashSet with 4 threads (3000 ms, 3 times)
+# Testing FineGrainLockedHashSetWithLocks with 4 threads (3000 ms, 3 times)
+# Testing LockFreeHashSet with 4 threads (3000 ms, 3 times)
+# Performing tests...
+# [set class name] [number of threads] [measurement time in seconds] [ops per second, avg] [same, std. dev.] [ops per second per thread, avg] [same, std. dev][size of final set, avg] [same, std. dev] [number of resizes, avg] [same, std. dev]
+# Testing JavaConcurrentHashMapWrapper with 1 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 1 3 3077040.67 454438.13 3077040.67 454438.13 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 2 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 2 3 10575473.56 4122452.04 5287736.78 2061226.02 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 4 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 4 3 15528734.89 1286265.56 3882183.72 321566.39 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 6 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 6 3 20950553.11 7146342.31 3491758.85 1191057.05 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 8 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 8 3 19817230.33 548313.39 2477153.79 68539.17 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 12 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 12 3 32404563 13042035.72 2700380.25 1086836.31 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 16 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 16 3 27555331.56 2064526.33 1722208.22 129032.9 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 20 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 20 3 29424467.11 439082.48 1471223.36 21954.12 10000 0 0 0
+# Testing JavaConcurrentHashMapWrapper with 24 threads (3000 ms, 3 times)
+JavaConcurrentHashMapWrapper 24 3 30844417.33 605132.71 1285184.06 25213.86 10000 0 0 0
+# Testing CoarseGrainLockedHashSet with 1 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 1 3 4595265.78 448716.92 4595265.78 448716.92 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 2 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 2 3 4535212 486038.5 2267606 243019.25 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 4 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 4 3 4178666.11 845720.32 1044666.53 211430.08 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 6 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 6 3 4748395.56 596375.61 791399.26 99395.93 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 8 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 8 3 5378692.22 763771.14 672336.53 95471.39 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 12 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 12 3 5530418.67 320849.73 460868.22 26737.48 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 16 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 16 3 5644157 389833.71 352759.81 24364.61 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 20 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 20 3 5445693.44 168129.04 272284.67 8406.45 10000 0 10 0
+# Testing CoarseGrainLockedHashSet with 24 threads (3000 ms, 3 times)
+CoarseGrainLockedHashSet 24 3 5798654.33 542603.68 241610.6 22608.49 10000 0 10 0
+# Testing FineGrainLockedHashSet with 1 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 1 3 3792864.67 151946.24 3792864.67 151946.24 10000 0 10 0
+# Testing FineGrainLockedHashSet with 2 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 2 3 4748863.44 557542.35 2374431.72 278771.18 10000 0 10 0
+# Testing FineGrainLockedHashSet with 4 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 4 3 5131758.33 85329.1 1282939.58 21332.28 10000 0 10 0
+# Testing FineGrainLockedHashSet with 6 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 6 3 5377296.33 45354.55 896216.06 7559.09 10000 0 10 0
+# Testing FineGrainLockedHashSet with 8 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 8 3 5625052.22 664992.58 703131.53 83124.07 10000 0 10 0
+# Testing FineGrainLockedHashSet with 12 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 12 3 5894322 238574.78 491193.5 19881.23 10000 0 10 0
+# Testing FineGrainLockedHashSet with 16 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 16 3 6046386.33 493798.21 377899.15 30862.39 10000 0 10 0
+# Testing FineGrainLockedHashSet with 20 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 20 3 6686977.22 530286.46 334348.86 26514.32 10000 0 10 0
+# Testing FineGrainLockedHashSet with 24 threads (3000 ms, 3 times)
+FineGrainLockedHashSet 24 3 6398070.89 704595.88 266586.29 29358.16 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 1 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 1 3 3823694.33 135485.75 3823694.33 135485.75 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 2 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 2 3 4584256 131206.47 2292128 65603.23 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 4 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 4 3 4841016.67 511383.96 1210254.17 127845.99 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 6 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 6 3 4024499.78 394481.89 670749.96 65746.98 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 8 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 8 3 3981217.67 223565.79 497652.21 27945.72 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 12 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 12 3 4347107.78 561619.79 362258.98 46801.65 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 16 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 16 3 4679566.33 514450.68 292472.9 32153.17 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 20 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 20 3 4144248.33 260263.35 207212.42 13013.17 10000 0 10 0
+# Testing FineGrainLockedHashSetWithLocks with 24 threads (3000 ms, 3 times)
+FineGrainLockedHashSetWithLocks 24 3 4596293.44 393182.85 191512.23 16382.62 10000 0 10 0
+# Testing LockFreeHashSet with 1 threads (3000 ms, 3 times)
+LockFreeHashSet 1 3 459089.67 89050.19 459089.67 89050.19 10000 0 10 0
+# Testing LockFreeHashSet with 2 threads (3000 ms, 3 times)
+LockFreeHashSet 2 3 4708254.22 2718033.83 2354127.11 1359016.91 10000 0 10 0
+# Testing LockFreeHashSet with 4 threads (3000 ms, 3 times)
+LockFreeHashSet 4 3 11886633.44 320920.37 2971658.36 80230.09 10000 0 10 0
+# Testing LockFreeHashSet with 6 threads (3000 ms, 3 times)
+LockFreeHashSet 6 3 18088736.33 1227164.69 3014789.39 204527.45 10000 0 10 0
+# Testing LockFreeHashSet with 8 threads (3000 ms, 3 times)
+LockFreeHashSet 8 3 21913804.22 1900902.36 2739225.53 237612.79 10000 0 10 0
+# Testing LockFreeHashSet with 12 threads (3000 ms, 3 times)
+LockFreeHashSet 12 3 29916895.44 1867402.46 2493074.62 155616.87 10000 0 10 0
+# Testing LockFreeHashSet with 16 threads (3000 ms, 3 times)
+LockFreeHashSet 16 3 37419957.33 2909476.78 2338747.33 181842.3 10000 0 10.33 0.58
+# Testing LockFreeHashSet with 20 threads (3000 ms, 3 times)
+LockFreeHashSet 20 3 41142120.22 728427.71 2057106.01 36421.39 10000 0 10 0
+# Testing LockFreeHashSet with 24 threads (3000 ms, 3 times)
+LockFreeHashSet 24 3 44319244.33 874731.52 1846635.18 36447.15 10000 0 10 0
