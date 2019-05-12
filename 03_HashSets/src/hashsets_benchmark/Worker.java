@@ -59,7 +59,7 @@ public class Worker implements Runnable {
 		// the worker generates random add, remove and deletes in the provided set, until instructed to stop
 		while(performOperations.get()) {
 			// start by deciding the nature of the operation
-			double coin = rand.nextDouble();
+			int coin = rand.nextInt(100);
 			BenchmarkConfiguration.operations op = config.getOperation(coin);
 
 			// randomly choose an integer to add/delete/remove

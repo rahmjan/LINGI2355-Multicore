@@ -77,7 +77,7 @@ public class BenchmarkConfiguration {
 		return (percentageOfAdd+percentageOfRemove+percentageOfContains == 100);
 	}
 	
-	public operations getOperation(double coin) {
+	public operations getOperation(int coin) {
 		if (coin < percentageOfAdd) {
 			return operations.ADD;
 		} else if ((coin - percentageOfAdd) < percentageOfRemove) {
