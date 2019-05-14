@@ -16,15 +16,15 @@ Little surprise is `Fine lock Read/Write` which is even worse than `Coarse lock`
 
 ##### Second configuration
 [Graph of 2-configuration](./plots/benchmark-2/performance_hashSets.pdf)  
-The results are the same as in the previous configuration.
+The results are the same as in the previous configuration. Throughput is better but that is result of bigger percentage of contains operation.
 
 ##### Third configuration
 [Graph of 3-configuration](./plots/benchmark-3/performance_hashSets.pdf)  
-With only the ADD operation, the result are again the same.
+Configuration with only the ADD operation, the results are important for comparision with next configuration.
 
 ##### Fourth configuration
 [Graph of 4-configuration](./plots/benchmark-4/performance_hashSets.pdf)  
 Here we can see the influence of resizing if we compare with the graph from previous configuration.
-Except `Coarse lock` and `Lock-free`, each of the Sets behave much more better because we do not need to wait for the resize.
-Another reason why `Coarse lock` is left behind is because of bigger initial number of lock.  
-For `Lock-free` there is no change but that is expected result. The resizing should have very minimal influence on this Set.
+Except `Coarse lock`, each of the Sets behave much more better because we do not need to wait for the resize.
+Another reason why `Coarse lock` is left behind is because of initial bigger number of locks.  
+For `Lock-free` there is minimal change but that is expected result. The resizing should have very minimal influence on this Set.
